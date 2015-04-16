@@ -6,7 +6,7 @@ Before running the code, do these things:
   - install the patch for version 1.4.3
   - load the license key
 2. install the R packages [R2WinBUGS](http://cran.r-project.org/web/packages/R2WinBUGS/index.html) and [memisc](http://cran.r-project.org/web/packages/memisc/)
-3. download the [supplementary data files](http://dx.doi.org/10.1016/j.socnet.2014.02.002) and unzip them into your R working directory
+3. download the [Koster & Leckie (2014) supplementary data files](http://dx.doi.org/10.1016/j.socnet.2014.02.002) and unzip them into your R working directory
 
 Note: This code uses a modified version of Koster & Leckie's "model1.txt" model specification. The only difference is that in "model1_mgt.txt" the intercept 'beta' is no longer an array. (The diff in this GitHub project shows the exact change made.)
 
