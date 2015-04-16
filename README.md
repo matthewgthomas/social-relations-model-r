@@ -1,3 +1,7 @@
+# Social Relations Models in R [![license MIT](http://b.repl.ca/v1/license-MIT-brightgreen.png)][license]
+
+[license]: https://github.com/matthewgthomas/social-relations-model-r/blob/master/LICENSE
+
 A replication, in R, of the social relations models presented in Koster &amp; Leckie (2014): "Food sharing networks in lowland Nicaragua: An application of the social relations model to count data"
 
 Before running the code, do these things:
