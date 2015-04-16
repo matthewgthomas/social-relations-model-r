@@ -1,0 +1,51 @@
+model{
+
+  # Dyadic response distributions
+  for(d in 1:300) {
+  
+    # Observed gifts from A to B modeled as Poisson distributed
+    giftsAB[d] ~ dpois(muAB[d])
+    
+    # Observed gifts from B to A modeled as Poisson distributed
+    giftsBA[d] ~ dpois(muBA[d])
+
+    # Linear predictor for log of expected gifts from A to B
+    log(muAB[d]) <- offset[d] + beta[1] + gr[hidA[d],1] + gr[hidB[d],2] + dd[d,1]
+    
+    # Linear predictor for log of expected gifts from A to B
+    log(muBA[d]) <- offset[d] + beta[1] + gr[hidB[d],1] + gr[hidA[d],2] + dd[d,2]
+  }
+
+  # Giver and receiver bivariate normal random effects
+  for (h in 1:25) {
+    gr[h,1:2] ~ dmnorm(zero[1:2],TAU_gr[1:2,1:2])
+  }
+  zero[1] <- 0
+  zero[2] <- 0
+
+  # Relationship bivariate normal random effects
+  for(d in 1:300) {
+    dd[d,1:2] ~ dmnorm(zero[1:2],TAU_dd[1:2,1:2])
+  }
+  
+  # Priors for fixed effects regression coefficients
+  for (k in 1:1) {
+    beta[k] ~ dflat()
+  }
+
+  # Priors for giver-receiver variance-covariance matrix
+  TAU_gr[1:2,1:2] ~ dwish(R_gr[1:2,1:2],2)
+  COV_gr[1:2,1:2] <- inverse(TAU_gr[,])
+  
+  # Priors for relationship variance-covariance matrix  
+  TAU_dd[1:2,1:2] <- inverse(COV_dd[1:2,1:2])
+  COV_dd[1,1] <- sigma2_d
+  COV_dd[1,2] <- sigma_dd
+  COV_dd[2,1] <- sigma_dd
+  COV_dd[2,2] <- sigma2_d
+  sigma_dd <- rho_dd*sigma2_d
+  sigma2_d <- 1/tau_d
+  tau_d ~ dgamma(0.001,0.001)
+  rho_dd ~ dunif(-1,1)
+
+}
