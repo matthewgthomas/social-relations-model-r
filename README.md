@@ -3,8 +3,8 @@ A replication, in R, of the social relations models presented in Koster &amp; Le
 Before running the code, do these things:
 
 1. install [WinBUGS](http://www.mrc-bsu.cam.ac.uk/software/bugs/the-bugs-project-winbugs/)
-  (a) install the patch for version 1.4.3
-  (b) load the license key
+  - install the patch for version 1.4.3
+  - load the license key
 2. install the R packages [R2WinBUGS](http://cran.r-project.org/web/packages/R2WinBUGS/index.html) and [memisc](http://cran.r-project.org/web/packages/memisc/)
 3. download the [supplementary data files](http://dx.doi.org/10.1016/j.socnet.2014.02.002) and unzip them into your R working directory
 
